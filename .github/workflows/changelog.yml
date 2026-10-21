@@ -8,4 +8,8 @@ jobs:
     container: alpine:edge
     steps:
       - uses: actions/checkout@main
+        with:
+          persist-credentials: false
       - run: echo "would update the changelog here"
+    permissions:
+      contents: read
