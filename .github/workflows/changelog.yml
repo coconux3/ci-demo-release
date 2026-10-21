@@ -1,0 +1,11 @@
+name: changelog
+on:
+  push:
+    branches: [main]
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+    container: alpine:edge
+    steps:
+      - uses: actions/checkout@main
+      - run: echo "would update the changelog here"
