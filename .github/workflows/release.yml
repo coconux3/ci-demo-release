@@ -1,0 +1,19 @@
+name: release
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version to release
+        required: true
+permissions: write-all
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    container: node:current
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "releasing ${{ github.event.inputs.version }}"
+      - uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ github.event.inputs.version }}
+          draft: true
